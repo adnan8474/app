@@ -339,7 +339,7 @@ def dataframe_to_csv(df: pd.DataFrame) -> str:
 def build_sidebar() -> Dict[str, int]:
     """Render sidebar controls and return threshold configuration."""
     st.sidebar.image(
-        "https://raw.githubusercontent.com/streamlit/brand/master/logos/mark/mark_primary_light.png",
+        "POCTIFY Logo.png",
         width=100,
     )
     st.sidebar.title("POCTIFY Settings")
@@ -365,14 +365,6 @@ def build_sidebar() -> Dict[str, int]:
         min_score = st.slider(
             "Minimum suspicion score", min_value=0, max_value=20, value=0, step=1
         )
-
-    with st.sidebar.expander("Filters"):
-        filters = {}
-        filters["Operator_ID"] = st.multiselect("Operator", options=[])
-        filters["Location"] = st.multiselect("Location", options=[])
-        filters["Device_ID"] = st.multiselect("Device", options=[])
-        filters["Test_Type"] = st.multiselect("Test Type", options=[])
-        date_range = st.date_input("Date range", [])
 
     with st.sidebar.expander("Instructions"):
         st.markdown(
@@ -490,7 +482,7 @@ st.markdown(
     ---
     **Disclaimer**: This tool assists NHS POCT audit teams in reviewing middleware
     logs for potential policy breaches. It does not store uploaded files and should
-    only be used with anonymised data in compliance with ISO 15189 guidelines.
+    only be used with anonymised data in compliance with data protection guidelines.
     """
 )
 
