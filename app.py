@@ -309,25 +309,6 @@ def load_file(upload) -> pd.DataFrame:
     return df
 
 
-def filter_dataframe(df: pd.DataFrame, filters: Dict[str, List[str]], date_range) -> pd.DataFrame:
-    """Apply sidebar filters to dataframe."""
-    if df.empty:
-        return df
-
-    if filters.get("Operator_ID"):
-        df = df[df["Operator_ID"].isin(filters["Operator_ID"])]
-    if filters.get("Location"):
-        df = df[df["Location"].isin(filters["Location"])]
-    if filters.get("Device_ID"):
-        df = df[df["Device_ID"].isin(filters["Device_ID"])]
-    if filters.get("Test_Type"):
-        df = df[df["Test_Type"].isin(filters["Test_Type"])]
-    if date_range:
-        start, end = date_range
-        df = df[(df["Timestamp"] >= start) & (df["Timestamp"] <= end)]
-    return df
-
-
 def dataframe_to_csv(df: pd.DataFrame) -> str:
     """Convert dataframe to CSV and encode to base64 for download."""
     csv = df.to_csv(index=False)
